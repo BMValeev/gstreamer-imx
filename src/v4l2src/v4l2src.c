@@ -542,10 +542,12 @@ static GstCaps *gst_imx_v4l2src_caps_for_current_setup(GstImxV4l2VideoSrc *v4l2s
 			gst_fmt = GST_VIDEO_FORMAT_NV12_64Z32;
 			break;
 #endif
+#ifdef V4L2_PIX_FMT_NV21M      
 		case V4L2_PIX_FMT_NV21:
 		case V4L2_PIX_FMT_NV21M:
 			gst_fmt = GST_VIDEO_FORMAT_NV21;
 			break;
+#endif  
 		case V4L2_PIX_FMT_YVU410:
 			gst_fmt = GST_VIDEO_FORMAT_YVU9;
 			break;
@@ -588,9 +590,11 @@ static GstCaps *gst_imx_v4l2src_caps_for_current_setup(GstImxV4l2VideoSrc *v4l2s
 			gst_fmt = GST_VIDEO_FORMAT_NV61;
 			break;
 #endif
+#ifdef V4L2_PIX_FMT_NV24
 		case V4L2_PIX_FMT_NV24:
 			gst_fmt = GST_VIDEO_FORMAT_NV24;
 			break;
+#endif   
 		default:
 			gst_fmt = gst_video_format_from_fourcc(fmt.fmt.pix.pixelformat);
 	}
